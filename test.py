@@ -34,25 +34,10 @@ if(op == 1):
     print(f"Accuracy with wavelet features: {accuracy:.4f}")
     print(f"Accuracy2 with wavelet features: {accuracy2:.4f}")
 elif(op==2):
-    # Feature matrix (Weight and Color Intensity)
-    X = np.array([
-        [150, 0.85],
-        [170, 0.9],
-        [140, 0.8],
-        [160, 0.95],
-        [175, 0.97],
-        [180, 0.98]
-    ])
-
-    # Labels (0 = Apple, 1 = Orange)
-    y = np.array([0, 0, 0, 1, 1, 1])
     # Create and train the decision tree
-    tree = DecisionTree(max_depth=3, criterion="gini")
-    tree.fit(X, y)
-
-    # New data points (Weight, Color Intensity)
-    X_new = np.array([[160, 0.92], [145, 0.81]])
+    tree = DecisionTree(max_depth=10, criterion="gini")
+    tree.fit(X_train_wavelet, train_labels)
 
     # Predict the labels for new data points
-    predictions = tree.predict(X_new)
-    print(predictions)  # Output could be [1, 0] (First is Orange, second is Apple)
+    predictions = tree.predict(X_test_wavelet)
+    print(predictions)  
